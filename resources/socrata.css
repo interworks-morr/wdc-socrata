@@ -1,0 +1,68 @@
+/* tags */
+body > .container
+{
+	padding-bottom: 50px;
+}
+label
+{
+	display: block;
+}
+input[type="text"]
+{
+	background-color: #bebebe;
+	border: 1px solid #454545;
+	border-radius: 3px;
+	color: #454545;
+	font-size: 14px;
+	font-weight: 300;
+	margin: 0 0 10px;
+	padding: 10px;
+	width: 500px;
+}
+textarea
+{
+	background-color: #bebebe;
+	border: 1px solid #454545;
+	border-radius: 3px;
+	color: #454545;
+	font-size: 14px;
+	font-weight: 300;
+	margin: 0 0 10px;
+	padding: 10px;
+	width: 500px;
+}
+
+
+/* classes */
+.btn
+{
+	clear: both;
+	float: right;
+	margin-top: 5px;
+}
+.container > .container
+{
+	padding: 0;
+	width: 500px;
+}
+.footer
+{
+	background-color: #eaebe4;
+	bottom: 0;
+	height: 30px;
+	position: fixed;
+	width: 100%;
+}
+.footer > .container
+{
+	width: 825px;
+}
+
+/* identified elements */
+#available_columns > h1
+{
+	font-size: 14pt;
+	font-weight: 700;
+	margin-bottom: 5px;
+	max-width: 100%;
+}

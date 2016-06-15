@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Socrata</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/resources/wdc.css" />
+		<link rel="stylesheet" href="/resources/socrata.css" />
+		<script src="//code.jquery.com/jquery-1.11.1.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://connectors.tableau.com/libs/tableauwdc-2.0.0-beta.js"></script>
+		<script src="wdc.js"></script>
+		<script>
+			$(function() {
+				//event handlers
+				function formFieldOnChange()
+				{
+					//set up local vars
+					var requiredFields = ["#site","#dataset_id"];
+					var filled = true;
+					
+					//check each required field
+					for(var i=0; i<requiredFields.length; i++)
+					{
+						if($(requiredFields[i]).val().length == 0)
+						{
+							filled = false;
+						}
+					}
+					
+					//enable/disable the submit button
+					$("#submitButton").prop("disabled",!filled);
+					
+					//show/hide available columns
+					if(filled)
+					{
+						//get available columns
+						var site = $("#site").val();
+						var datasetID = $("#dataset_id").val();
+						getAvailableColumns(site,datasetID);
+					}
+					else
+					{
+						//reset the list
+						resetAvailableColumns();
+					}
+				}
+				
+				
+				//utility functions
+				function getAvailableColumns(site,datasetID)
+				{
+					//reset the list
+					resetAvailableColumns();
+					
+					var url = "autocomplete.php?site=" + site + "&dataset_id=" + datasetID;
+					$.getJSON(url,function (data){
+						//repopulate the list
+						for(i=0; i<data.length; i++)
+						{
+							$("#available_columns_list").append(  $("<li>").append(data[i])  );
+						}
+						
+						//show the results
+						$("#available_columns").show();
+					});
+				}
+				function resetAvailableColumns()
+				{
+					//clear the list
+					$("#available_columns_list").empty();
+					
+					//hide the results
+					$("#available_columns").hide();
+				}
+				
+				
+				//onload functionality
+				function initialize()
+				{
+					$("#site").change(formFieldOnChange);
+					$("#dataset_id").change(formFieldOnChange);
+					
+					//disable the submit button until a form is filled in
+					formFieldOnChange();
+				}
+				$(document).ready(initialize);
+			});
+		</script>
+	</head>
+	<body>
+		<div class="navbar navbar-default">
+			<a class="navbar-wdc" href="/">
+				<img id="wdc-logo-left" src="/resources/WDC_Logo.png" />
+				<div id="wdc-logo-right">
+					<img src="/resources/WDC_Logo_Header.png" />
+					<span>Socrata</span>
+				</div>
+			</a>
+			<a class="navbar-brand" href="http://www.interworks.com">
+				<img src="https://www.interworks.com/logo/images/logo.png" />
+			</a>
+			<div class="navbar-border">
+				<img src="/resources/WDC_Border.png" />
+			</div>
+		</div>
+		<div class="container">
+			<div class="alert alert-danger warning-msg" id="tableau-warning-msg" style="display:none;">
+				<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+				<b>Whoa!</b> We've detected you are loading this in a browser window.<br/>Please load this window from Tableau to use the
+				<a href="http://onlinehelp.tableau.com/current/pro/online/windows/en-us/help.htm#examples_web_data_connector.html" target="_blank">Web Data Connector</a>.
+			</div>
+			
+			<noscript>
+				<div class="alert alert-danger warning-msg" id="noscript-warning">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					<em>Warning:</em>You need javascript enabled for Tableau Web Data Connectors to function.
+				</div>
+			</noscript>
+			
+			<!-- the good stuff -->
+			<form class="container">
+				<div>
+					<label for="site">Socrata Site: </label>
+					<input type="text" id="site" placeholder="soda.demo.socrata.com">
+				</div>
+				
+				<div>
+					<label for="dataset_id">Dataset ID: </label>
+					<input type="text" id="dataset_id" placeholder="4tka-6guv -or- /resource/4tka-6guv.json">
+				</div>
+				
+				<div id="available_columns" style="display:none">
+					<label for="available_columns_list">Available Columns:</label>
+					<ul id="available_columns_list"></ul>
+				</div>
+				
+				<div>
+					<label for="where">Where Clause: </label>
+					<textarea id="where" placeholder="magnitude &lt; 3.0"></textarea>
+				</div>
+				
+				<div>
+					<label for="limit">Limit: </label>
+					<input type="text" id="limit" value="10000">
+				</div>
+				
+				<button id="submitButton" type="button" class="btn">Get Data</button>
+			</form>
+		</div>
+		
+		<footer class="footer">
+			<div class="navbar-border">
+				<img src="/resources/WDC_Border.png" />
+			</div>
+			<div class="container">
+				<p class="text-muted">All data is &copy;<a href="https://www.socrata.com" target="_blank">Socrata</a> or the site specified above. Please refer to the applicable Terms of Service for usage terms.</p>
+			</div>
+		</footer>
+	</body>
+</html>

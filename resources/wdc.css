@@ -1,0 +1,100 @@
+body {
+	background-color: #ecede5;
+	color: #b0ac94;
+	font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
+}
+
+a, a:hover, a:active, a:visited {
+	font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
+	text-decoration: none;
+	color: #3a382d;
+	font-weight: bold;
+}
+
+.navbar {
+	background-color: #ecede5;
+	border-width: 0px;
+	padding-bottom: 2px;
+	border-radius: 0px;
+}
+
+.navbar-brand {
+	float: right;
+}
+
+.navbar-wdc {
+	float: left;
+	color: #b0ac94;
+	margin: 5px 0px 0px 15px;
+}
+
+.navbar-wdc:hover, .navbar-wdc:active, .navbar-wdc:visited {
+	color: #b0ac94;
+	text-decoration: none;
+}
+
+#wdc-logo-left {
+	float: left;
+}
+
+#wdc-logo-right {
+	float: left;
+	margin-left: 8px;
+	margin-top: 3px;
+}
+
+#wdc-logo-right span {
+	display: block;
+	font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
+	font-size: 10px;
+	margin: 3px;
+}
+
+.text-muted {
+	color: #b0ac94;
+	font-weight: bold;
+}
+
+.container {
+	width: 750px;
+}
+
+.navbar-border {
+	width: 100%;
+	background-color: #d6d6cb;
+	clear: both;
+	height: 3px;
+}
+
+.navbar-border img {
+	float: left;
+	padding: 0px;
+	margin: 0px;
+}
+
+.navbar-brand {
+	padding: 11px 15px;
+}
+
+.btn {
+	color: #fff;
+	background-color: #c4c1b1;
+	border-color: #b0ac96;
+	font-weight: bold;
+	font-style: italic;
+	font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
+	border-width: 2px;
+}
+
+.btn:hover, .btn:active, .btn:visited, .btn:focus {
+	background-color: #b0ac96;
+	border-color: #827e69;
+}
+
+#search-results {
+	margin-top: 15px;
+}
+
+#search-results .navbar-border {
+	margin-bottom: 7px;
+}
