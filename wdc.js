@@ -37,15 +37,34 @@ $(function() {
 		{
 			var formData = JSON.parse(tableau.connectionData);
 			var url = "fetch_data.php?type=schema&site=" + formData["site"] + "&dataset_id=" + formData["dataset_id"];
-			$.getJSON(url,function (data){ schemaCallback([data]); });
+			$.get(url,function (data)
+			{
+				if(data.substring(0,6) == "Error ")
+				{
+					throw data;
+				}
+				else
+				{
+					data = JSON.parse(data);
+				}
+				schemaCallback([data]); 
+			});
 		};
 		
 		myConnector.getData = function(table, doneCallback)
 		{
 			var formData = JSON.parse(tableau.connectionData);
 			var url = "fetch_data.php?type=data&site=" + formData["site"] + "&dataset_id=" + formData["dataset_id"] + "&where=" + formData["where"] + "&limit=" + formData["limit"];
-			$.getJSON(url,function(data)
+			$.get(url,function(data)
 			{
+				if(data.substring(0,6) == "Error ")
+				{
+					throw data;
+				}
+				else
+				{
+					data = JSON.parse(data);
+				}
 				table.appendRows(data);
 				doneCallback();
 			});

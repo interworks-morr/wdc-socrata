@@ -79,7 +79,14 @@ if($type == TYPE_SCHEMA)
 	
 	//make request to site to determine columns
 	$params = array("\$select" => "*", "\$limit" => 1);
-	$response = $socrata->get($datasetID, $params);
+	try
+	{
+		$response = $socrata->get($datasetID, $params);
+	}
+	catch (Exception $e)
+	{
+		die($e->getMessage());
+	}
 	
 	//validate
 	if(count($response) != 1)
@@ -114,7 +121,14 @@ elseif($type == TYPE_DATA)
 	
 	//make request to google
 	$params = array("\$where" => $where, "\$limit" => $limit);
-	$response = $socrata->get($datasetID, $params);
+	try
+	{
+		$response = $socrata->get($datasetID, $params);
+	}
+	catch (Exception $e)
+	{
+		die($e->getMessage());
+	}
 	$output = json_encode($response);
 }
 else
