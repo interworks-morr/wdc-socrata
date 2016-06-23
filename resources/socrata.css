@@ -76,6 +76,18 @@ textarea
 {
 	width: 825px;
 }
+.toggle
+{
+	background-color: #b0ac96;
+	border: 2px solid #827e69;
+	border-radius: 4px;
+	color: #333;
+	cursor: pointer;
+	display: inline-block;
+	font-style: italic;
+	text-align: center;
+	width: 20px;
+}
 
 /* identified elements */
 #available_columns > h1

@@ -14,6 +14,22 @@
 		<script>
 			$(function() {
 				//event handlers
+				function directionsOnClick()
+				{
+					//show the toggle button since it is hidden by default for no-js
+					$("#directions_toggle").show();
+					
+					if($("#directions").is(':visible'))
+					{
+						$("#directions").hide();
+						$("#directions_toggle").text('+');
+					}
+					else
+					{
+						$("#directions").show();
+						$("#directions_toggle").text('-');
+					}
+				}
 				function formFieldOnChange()
 				{
 					//set up local vars
@@ -81,9 +97,13 @@
 				{
 					$("#site").change(formFieldOnChange);
 					$("#dataset_id").change(formFieldOnChange);
+					$("#directions_toggle").click(directionsOnClick);
 					
 					//disable the submit button until a form is filled in
 					formFieldOnChange();
+					
+					//hide the directions unless clicked on
+					directionsOnClick();
 				}
 				$(document).ready(initialize);
 			});
@@ -123,15 +143,13 @@
 			<form class="container">
 				
 				<div class="directions">
-					<h1>How to use:</h1>
-					<p>
-						<ol>
-							<li>Find a Socrata dataset from the <a href="http://www.opendatanetwork.com" target="_blank">Open Data Network</a> or by other means.</li>
-							<li>Enter the Socrata site (e.g. soda.demo.socrata.com or data.nasa.gov) and the dataset ID (e.g. 4tka-6guv or gh4g-9sfh) into the appropriate fields.</li>
-							<li>If the dataset needs to be filtered, enter the conditions into the where clause field, otherwise leave blank.  See the <a href="https://dev.socrata.com/docs/queries/where.html" target="_blank">documentation</a> for syntax.</li>
-							<li>If the dataset needs to be limited, enter the number of records in the limit field, otherwise leave blank.</li>
-						</ol>
-					</p>
+					<h1><span id="directions_toggle" class="toggle" style="display:none" title="Click to expand/hide">+</span> How to use</h1>
+					<ol id="directions">
+						<li>Find a Socrata dataset from the <a href="http://www.opendatanetwork.com" target="_blank">Open Data Network</a> or by other means.</li>
+						<li>Enter the Socrata site (e.g. soda.demo.socrata.com or data.nasa.gov) and the dataset ID (e.g. 4tka-6guv or gh4g-9sfh, respectively) into the appropriate fields below.<br/><em>Tip: These bits of information are usually found in the URL bar of your brower.</em></li>
+						<li>If the dataset needs to be filtered, enter the conditions into the where clause field, otherwise leave blank.  See the <a href="https://dev.socrata.com/docs/queries/where.html" target="_blank">Socrata documentation</a> for syntax.</li>
+						<li>If the dataset needs to be limited, enter the number of records in the limit field, otherwise leave blank.</li>
+					</ol>
 				</div>
 				
 				<div>
