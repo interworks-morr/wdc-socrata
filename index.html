@@ -3,12 +3,13 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Socrata</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="/resources/wdc.css" />
 		<link rel="stylesheet" href="/resources/socrata.css" />
 		<script src="//code.jquery.com/jquery-1.11.1.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script src="https://connectors.tableau.com/libs/tableauwdc-2.0.0-beta.js"></script>
+		<script src="//connectors.tableau.com/libs/tableauwdc-2.0.0-beta.js"></script>
+		<script type="text/javascript" src="/resources/tableau-output.js"></script>
 		<script src="wdc.js"></script>
 		<script>
 			$(function() {
@@ -97,7 +98,7 @@
 					<span>Socrata</span>
 				</div>
 			</a>
-			<a class="navbar-brand" href="http://www.interworks.com">
+			<a class="navbar-brand" href="https://www.interworks.com">
 				<img src="https://www.interworks.com/logo/images/logo.png" />
 			</a>
 			<div class="navbar-border">
@@ -108,7 +109,7 @@
 			<div class="alert alert-danger warning-msg" id="tableau-warning-msg" style="display:none;">
 				<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 				<b>Whoa!</b> We've detected you are loading this in a browser window.<br/>Please load this window from Tableau to use the
-				<a href="http://onlinehelp.tableau.com/current/pro/online/windows/en-us/help.htm#examples_web_data_connector.html" target="_blank">Web Data Connector</a>.
+				<a href="https://onlinehelp.tableau.com/current/pro/online/windows/en-us/help.htm#examples_web_data_connector.html" target="_blank">Web Data Connector</a>.
 			</div>
 			
 			<noscript>
@@ -120,6 +121,19 @@
 			
 			<!-- the good stuff -->
 			<form class="container">
+				
+				<div class="directions">
+					<h1>How to use:</h1>
+					<p>
+						<ol>
+							<li>Find a Socrata dataset from the <a href="http://www.opendatanetwork.com" target="_blank">Open Data Network</a> or by other means.</li>
+							<li>Enter the Socrata site (e.g. soda.demo.socrata.com or data.nasa.gov) and the dataset ID (e.g. 4tka-6guv or gh4g-9sfh) into the appropriate fields.</li>
+							<li>If the dataset needs to be filtered, enter the conditions into the where clause field, otherwise leave blank.  See the <a href="https://dev.socrata.com/docs/queries/where.html" target="_blank">documentation</a> for syntax.</li>
+							<li>If the dataset needs to be limited, enter the number of records in the limit field, otherwise leave blank.</li>
+						</ol>
+					</p>
+				</div>
+				
 				<div>
 					<label for="site">Socrata Site: </label>
 					<input type="text" id="site" placeholder="soda.demo.socrata.com">
@@ -127,7 +141,7 @@
 				
 				<div>
 					<label for="dataset_id">Dataset ID: </label>
-					<input type="text" id="dataset_id" placeholder="4tka-6guv -or- /resource/4tka-6guv.json">
+					<input type="text" id="dataset_id" placeholder="4tka-6guv" title="can also use the following format: /resource/4tka-6guv.json">
 				</div>
 				
 				<div id="available_columns" style="display:none">

@@ -45,6 +45,25 @@ textarea
 	padding: 0;
 	width: 500px;
 }
+.directions
+{
+	border: 2px dashed #d0d1ca;
+	border-radius: 4px;
+	box-shadow: 5px 5px 5px 0 #d0d1ca;
+	margin-bottom: 20px;
+	padding: 5px;
+}
+.directions a
+{
+	color: #94917c;
+}
+.directions h1
+{
+	font-size: 14px;
+	font-weight: 800;
+	margin-bottom: 5px;
+	margin-top: 0;
+}
 .footer
 {
 	background-color: #eaebe4;
@@ -65,4 +84,26 @@ textarea
 	font-weight: 700;
 	margin-bottom: 5px;
 	max-width: 100%;
+}
+
+/* other */
+::-webkit-input-placeholder
+{ /* WebKit, Blink, Edge */
+	color: #fff;
+	font-style: italic;
+}
+:-moz-placeholder
+{ /* Mozilla Firefox 4 to 18 */
+	color: #fff;
+	font-style: italic;
+}
+::-moz-placeholder
+{ /* Mozilla Firefox 19+ */
+	color: #fff;
+	font-style: italic;
+}
+:-ms-input-placeholder
+{ /* Internet Explorer 10-11 */
+	color: #fff;
+	font-style: italic;
 }
